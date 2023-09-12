@@ -1,4 +1,4 @@
-- name: install mongodb
+- name: Configuring Roboshop Project
   hosts: "{{component }}"
   become: yes
   roles:
