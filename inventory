@@ -13,6 +13,9 @@ redis.devopspractice.tech
 [user]
 user.devopspractice.tech
 
+[cart]
+cart.devopspractice.tech
+
 [mysql]
 mysql.devopspractice.tech
 
