@@ -1,0 +1,23 @@
+- name : setup nodejs repo
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : nodejs
+
+- name : setup user/app directory roboshop
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : setup-user
+
+- name : install nodejs dependencies
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : install-dependencies
+
+- name : systemd setup and restart
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : systemd-setup
+
+
+
+
