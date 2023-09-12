@@ -17,7 +17,6 @@
   ansible.builtin.import_role :
     name : common
     tasks_from : mongo-load-schema
-    remote_src: yes
 
 - name : systemd setup and restart
   ansible.builtin.import_role :
