@@ -1,0 +1,34 @@
+- name : Install Maven
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : maven-install
+
+- name : setup user/app directory roboshop
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : setup-user
+
+- name : Install maven dependencies
+  ansible.builtin.command : mvn clean package
+  args :
+    chdir : /app
+
+- name: rename .jar file
+  ansible.builtin.shell: mv target/shipping-1.0.jar shipping.jar
+  args :
+    chdir : /app
+
+- name : Install mysql client software
+  ansible.builtin.yum :
+    name: mysql
+    state: installed
+
+- name : load mysql schema
+  ansible.builtin.shell: mysql -h mysql.devopspractice.tech -uroot -pRoboShop@1 < /app/schema/shipping.sql
+
+- name : systemd setup and restart
+  ansible.builtin.import_role :
+    name : common
+    tasks_from : systemd-setup
+
+
