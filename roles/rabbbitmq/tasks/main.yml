@@ -1,7 +1,4 @@
-- name: configuring rabbitmq component
-  hosts: rabbitmq
-  become: yes
-  tasks:
+
   - name: setup rabbitmq repos
     ansible.builtin.shell: "{{item}}"
     loop:
